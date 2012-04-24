@@ -1,8 +1,7 @@
 object App {
-  import unfiltered._
   import unfiltered.response.{ ResponseString, JsonContent }
   import unfiltered.request.{ Path, Seg }
-  import netty._
+  import unfiltered.netty._
 
   def main(args: Array[String]) {
     lazy val f = Env("FLICKR_KEY") match {

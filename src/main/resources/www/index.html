@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <title>300 scones</title>
+    <link href='http://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
+    <style>
+      body { margin:0; padding:0; font-family: 'Signika', sans-serif; font-size:28px; }
+      ul { list-style: none; margin:0; padding: 0; }
+      li {
+        text-align:center; float: left; padding: .25em; margin:.25em;
+        overflow: hidden; width: 100px; height:100px; border: 4px solid #eee;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+      }
+      li:hover { border: 4px solid #FF0090; }
+      li img { height:80px; overflow:auto; }
+      #mast {
+        text-align: center;
+        background:#333;
+        color: #fff;
+        height:100%;
+        background-image:url("http://s3.amazonaws.com/lomography-original-photos/45/71a5a585b0e74713bdb2fa9a5ce9cc83648062.jpg?AWSAccessKeyId=AKIAIY7LFQUUTJXJT6YQ&Expires=2147385600&Signature=ar0M5fjXOXdEhqXGQ5wNU838EF8%3D");
+        text-shadow:#333 0 0 4px;
+      }
+      #mast h1 { top:50%; position:relative; font-size:200px; }
+      #mast p { color: #ccc; }
+      #scones { padding:.5em; width:800px; margin:0 auto; }
+      #close { clear:both; text-align:center; margin:1em 0; padding:1em; border-top:1px solid #eee; color:#ccc; }
+    </style>
+  </head>
+  <body>
+    <div id="mast">
+      <h1>300 scones</h1>
+      <p>care of Mr. Unagai</p>
+    </div>
+    <div class="contained">
+      <ul id="scones"></ul>
+    </div>
+    <div id="close">Mr. Unagi is not available to take your call</div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      (function($){ $(function(){
+          $.getJSON('/scones.json', function(scones) {
+              var s = $("#scones");
+              console.log(scones.photos);
+              $.map(scones.photos.photo, function(p, i) {
+                  s.append([
+                      '<li><img src="http://farm'
+                      , p.farm
+                      , '.staticflickr.com/'
+                      , p.server
+                      , '/'
+                      , p.id
+                      , '_'
+                      , p.secret
+                      , '_t.jpg"/></li>'].join(''));
+              });
+          });
+      })})(jQuery);
+    </script>
+  </body>
+</html>

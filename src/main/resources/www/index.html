@@ -45,7 +45,6 @@
       (function($){ $(function(){
           $.getJSON('/scones.json', function(scones) {
               var s = $("#scones");
-              console.log(scones.photos);
               $.map(scones.photos.photo, function(p, i) {
                   s.append([
                       '<li><img src="http://farm'
